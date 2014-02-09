@@ -4,7 +4,6 @@
 
 
 GameState::GameState(void) {
-
 }
 
 void GameState::initFood(void) {

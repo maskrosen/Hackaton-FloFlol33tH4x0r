@@ -4,6 +4,7 @@
 #include "PacmanInput.h"
 #include "Map.h"
 #include <time.h>
+#include "Ghost.h"
 #pragma once
 
 using namespace std;
@@ -22,6 +23,8 @@ int main()
 	
 	Pacman* pacman = new Pacman(30, 100.f, 200.f);
 	PacmanInput* pacmanInput = new PacmanInput(pacman);
+
+	Ghost ghost(30.f, 40.f, 200.f, 300.f, sf::Color::Red);
 
 
 	//Zhe amaaaaazing Game Loop
@@ -62,6 +65,14 @@ int main()
 		}
 		window.draw(pacman->getBody());
 		window.draw(pacman->getMouth());
+
+		window.draw(ghost.getBody());
+		window.draw(ghost.getHead());
+		window.draw(ghost.getLeg1());
+		window.draw(ghost.getLeg2());
+		window.draw(ghost.getLeg3());
+		window.draw(ghost.getLeg4());
+
 
         window.display();
     }
