@@ -2,45 +2,66 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "Map.h"
 #pragma once
 
 using namespace std;
 
-class Map {
-public:
-	Map(int level){loadMap(level);};
-	int getBlock(int, int);
-	int mapSize();
-private:
-	void loadMap(int level);
-	int xLength;
-	int yLength;
-	int mapBlocks[20][20];
-};
-
-void Map::loadMap(int level){
-	xLength = 20;
-	yLength = 20;
-
-	string line;
-	ifstream file;
-	int i = 0;
-
-	file.open("level"+level);
-	while ( getline(file, line) ) {
-		for(int j = 0; j < yLength; j++){
-			mapBlocks [i][j] = line[j] - '0';
+//Loads the map.
+Map::Map(){
+	size = 20;
+	int blocks[][20] = {
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+		{1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1},
+		{1,0,1,1,0,1,0,1,1,1,1,1,1,0,1,0,1,1,0,1},
+		{1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+		{1,0,1,0,1,1,0,0,0,0,0,0,0,0,1,1,0,1,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,1,0,1,1,0,0,0,0,0,0,0,0,1,1,0,1,0,1},
+		{1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+		{1,0,1,1,0,1,1,1,1,2,2,1,1,1,1,0,1,1,0,1},
+		{1,0,0,0,0,1,2,2,3,2,2,3,2,2,1,0,0,0,0,1},
+		{1,0,0,0,0,1,2,2,2,3,3,2,2,2,1,0,0,0,0,1},
+		{1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1},
+		{1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+		{1,0,1,0,1,1,0,0,0,0,0,0,0,0,1,1,0,1,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,1,0,1,1,0,0,0,0,0,0,0,0,1,1,0,1,0,1},
+		{1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+		{1,0,1,1,0,1,0,0,0,0,0,0,0,0,1,0,1,1,0,1},
+		{1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1},
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+	};
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < size; j++){
+			mapBlocks[i][j] = blocks[i][j];
 		}
-		i++;
 	}
+
 }
 
+/*
+* Get that memory back!!
+*/
+Map::~Map(){
+	delete(mapBlocks);
+}
 
+/*
+* Returns an id for the given block.
+* 0 = Free space with food item
+* 1 = wall
+* 2 = Free space
+* 3 = Ghost starts here
+*/
 int Map::getBlock(int x, int y){
 	return mapBlocks[x][y];
 }
 
+/*
+* Returns the maps length in blocks.
+*/
 int Map::mapSize(){
-	return xLength;
+	return size;
 }
 
