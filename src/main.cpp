@@ -72,6 +72,10 @@ int main()
 		window.draw(ghost.getLeg2());
 		window.draw(ghost.getLeg3());
 		window.draw(ghost.getLeg4());
+		window.draw(ghost.getEye1());
+		window.draw(ghost.getEye2());
+		window.draw(ghost.getEyeP1());
+		window.draw(ghost.getEyeP2());
 
 
         window.display();

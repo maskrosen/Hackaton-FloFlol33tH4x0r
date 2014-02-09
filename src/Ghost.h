@@ -23,6 +23,10 @@ class Ghost {
 		sf::ConvexShape Ghost::getLeg2();
 		sf::ConvexShape Ghost::getLeg3();
 		sf::ConvexShape Ghost::getLeg4();
+		sf::CircleShape Ghost::getEye1();
+		sf::CircleShape Ghost::getEye2();		
+		sf::CircleShape Ghost::getEyeP1();
+		sf::CircleShape Ghost::getEyeP2();
 
 	private:
 		void Ghost::createLeg(int, sf::ConvexShape*, sf::Color);

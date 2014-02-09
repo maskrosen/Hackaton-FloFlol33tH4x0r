@@ -16,8 +16,22 @@ Ghost::Ghost (float w, float h, float x, float y, sf::Color color) {
 	createLeg(2, &leg3, color);
 	createLeg(3, &leg4, color);
 
-	eye1.setRadius(width/5);
+	eye1.setRadius(width/7);
 	eye1.setFillColor(sf::Color::White);
+	eye1.setPosition(sf::Vector2f(xPos+width/7, yPos+width/5));
+
+	eyeP1.setRadius(width/11);
+	eyeP1.setFillColor(sf::Color::Black);
+	eyeP1.setPosition(sf::Vector2f(xPos+width/6, yPos+width/4));
+
+	eye2.setRadius(width/7);
+	eye2.setFillColor(sf::Color::White);
+	eye2.setPosition(sf::Vector2f(xPos+width-width/7*3, yPos+width/5));
+
+	eyeP2.setRadius(width/11);
+	eyeP2.setFillColor(sf::Color::Black);
+	eyeP2.setPosition(sf::Vector2f(xPos+width-width/8*3, yPos+width/4));
+
 		
 }
 
@@ -52,4 +66,20 @@ sf::ConvexShape Ghost::getLeg3(){
 
 sf::ConvexShape Ghost::getLeg4(){	
 	return leg4;
+}
+
+sf::CircleShape Ghost::getEye1(){
+	return eye1;
+}
+
+sf::CircleShape Ghost::getEye2(){
+	return eye2;
+}
+
+sf::CircleShape Ghost::getEyeP1(){
+	return eyeP1;
+}
+
+sf::CircleShape Ghost::getEyeP2(){
+	return eyeP2;
 }
