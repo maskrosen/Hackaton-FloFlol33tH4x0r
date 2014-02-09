@@ -12,7 +12,7 @@ private:
 	sf::CircleShape body;
 	sf::ConvexShape mouth;
   public:
-    Pacman (float, float, float);
+    Pacman (float, float);
 	sf::CircleShape Pacman::getBody();
 	sf::ConvexShape Pacman::getMouth();
 	void Pacman::setDirection(Direction);

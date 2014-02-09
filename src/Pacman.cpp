@@ -1,11 +1,11 @@
 #include "Pacman.h"
 #pragma once
 
-Pacman::Pacman (float r, float x, float y) {
-	radius = r;
+Pacman::Pacman (float x, float y) {
+	radius = 12;
 	xPos = x;
 	yPos = y;
-	PACMAN_SPEED = 25;
+	PACMAN_SPEED = 70;
 	body.setRadius(radius);
 	body.setFillColor(sf::Color::Yellow);
 	body.setPosition(x,y);
