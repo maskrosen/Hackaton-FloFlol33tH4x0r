@@ -5,7 +5,7 @@
 
 GameState::GameState(void) {
 	m = &Map();
-	pacman = &Pacman(30, m->getPacmanStartPos().getX()*32, m->getPacmanStartPos().getY()*32);
+	pacman = &Pacman(m->getPacmanStartPos().getX()*32, m->getPacmanStartPos().getY()*32);
 	initFood();
 }
 
