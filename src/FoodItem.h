@@ -9,6 +9,7 @@ private:
 	sf::CircleShape body; //TODO: make this a pointer and add a destructor?
 
 public:
+	FoodItem (void);
 	FoodItem (int, int, float, float);
 	int FoodItem::getScore(void);
 	sf::CircleShape FoodItem::getBody();

@@ -10,6 +10,13 @@ FoodItem::FoodItem(int s, int r, float x, float y) {
 	body.setPosition(x,y);
 }
 
+FoodItem::FoodItem(void) {
+	score = 10;
+	radius = 10;
+	xPos = 10.f;
+	yPos = 10.f;
+}
+
 int FoodItem::getScore(void) {
 	return score;
 }
