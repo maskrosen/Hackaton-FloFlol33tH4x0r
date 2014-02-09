@@ -1,7 +1,7 @@
 #include "Pacman.h"
 #pragma once
 
-Pacman::Pacman(int r, float x, float y) {
+Pacman::Pacman (float r, float x, float y) {
 	radius = r;
 	xPos = x;
 	yPos = y;
