@@ -2,6 +2,8 @@
 #include <iostream>
 #include <time.h>
 #include "Pacman.h"
+#include "PacmanInput.h"
+#pragma once
 
 using namespace std;
 
@@ -14,20 +16,30 @@ int main()
     sf::CircleShape shape(150.f);
     shape.setFillColor(sf::Color::Blue);
 	
-	Pacman pacman(30,100.f,200.f);
+	Pacman* pacman = new Pacman(30, 100.f, 200.f);
+	PacmanInput* pacmanInput = new PacmanInput(pacman);
 
     while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            switch (event.type)
+			{
+				case sf::Event::Closed:
+					window.close();
+					break;
+
+				case sf::Event::KeyPressed:
+					pacmanInput->ProcessEvent(event);
+					break;
+			}
+
         }
         window.clear();
       //  window.draw(shape);
-		window.draw(pacman.getBody());
-		window.draw(pacman.getMouth());
+		window.draw(pacman->getBody());
+		window.draw(pacman->getMouth());
 
         window.display();
 		time(&nowTime);
