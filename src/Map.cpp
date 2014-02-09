@@ -35,6 +35,14 @@ Map::Map(){
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
 			mapBlocks[i][j] = blocks[i][j];
+			sf::RectangleShape b;
+			b.setSize(sf::Vector2f(10,10));
+			if (mapBlocks[i][j]) {
+				b.setFillColor(sf::Color::Black);
+			} else {
+				b.setFillColor(sf::Color::Yellow);
+			}
+			mapShapes[i][j] = b;
 		}
 	}
 
@@ -67,3 +75,9 @@ int Map::mapSize(){
 	return size;
 }
 
+/*
+*	Returns an array with blocks
+*/
+sf::RectangleShape* Map::getShape(int x, int y){
+	return &(mapShapes[x][y]);
+}

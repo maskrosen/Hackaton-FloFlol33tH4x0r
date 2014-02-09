@@ -13,9 +13,11 @@ public:
 	~Map();
 	int getBlock(int, int);
 	int mapSize();
+	sf::RectangleShape* getShape(int, int);
 private:
 	void loadMap();
 	void destroyMap();
 	int size;
 	int mapBlocks [20][20];
+	sf::RectangleShape mapShapes [20][20];
 };
