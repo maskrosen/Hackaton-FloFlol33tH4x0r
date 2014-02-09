@@ -67,8 +67,10 @@ int main()
 		window.draw(pacman->getBody());
 		
 		mouthTimer+=tDiff;
-		if(mouthTimer>=1){
+		if(mouthTimer>=0.25){
 			window.draw(pacman->getMouth());
+		}
+		if(mouthTimer>=0.5){			
 			mouthTimer=0;
 		}
 

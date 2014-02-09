@@ -81,9 +81,7 @@ void Pacman::update(float delta)
 	xPos += PACMAN_SPEED*delta*xDir;
 	yPos += PACMAN_SPEED*delta*yDir;
 	body.setPosition(xPos, yPos);
-	mouth.setPoint(0, sf::Vector2f(xPos, yPos+radius/2));
-	mouth.setPoint(1, sf::Vector2f(xPos+radius, yPos+radius));
-	mouth.setPoint(2, sf::Vector2f(xPos, yPos+3*radius/2));
+	updateMouthDirection();
 }
 
 Direction Pacman::getDirection(void){
