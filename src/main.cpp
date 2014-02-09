@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <time.h>
+#include "Pacman.h"
+
 using namespace std;
 
 int main()
@@ -12,6 +14,7 @@ int main()
     sf::CircleShape shape(150.f);
     shape.setFillColor(sf::Color::Blue);
 	
+	Pacman pacman(30,100.f,200.f);
 
     while (window.isOpen())
     {
@@ -21,9 +24,11 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
         window.clear();
-        window.draw(shape);
+      //  window.draw(shape);
+		window.draw(pacman.getBody());
+		window.draw(pacman.getMouth());
+
         window.display();
 		time(&nowTime);
 		double seconds = difftime(nowTime,startTime);
