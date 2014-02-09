@@ -25,13 +25,11 @@ sf::ConvexShape Pacman::getMouth(){
 	return mouth;
 }
 
-void Pacman::setDirection(Direction dir)
-{
+void Pacman::setDirection(Direction dir){
 	direction = dir;
 }
 
-void Pacman::update(float delta)
-{
+void Pacman::update(float delta){
 	int xDir = 0;
 	int yDir = 0;
 	switch (direction) {
@@ -57,4 +55,8 @@ void Pacman::update(float delta)
 	mouth.setPoint(0, sf::Vector2f(xPos, yPos+radius/2));
 	mouth.setPoint(1, sf::Vector2f(xPos+radius, yPos+radius));
 	mouth.setPoint(2, sf::Vector2f(xPos, yPos+3*radius/2));
+}
+
+Direction Pacman::getDirection(void){
+	return direction;
 }

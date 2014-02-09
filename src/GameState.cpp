@@ -17,4 +17,14 @@ void GameState::initFood(void) {
 	}
 }
 
+void GameState::update(void){
+	
+	Direction dir = pacman.getDirection();
+	//if pacman + direction 
+	updateGhosts();
 
+}
+
+void GameState::updateGhosts(void){
+
+}

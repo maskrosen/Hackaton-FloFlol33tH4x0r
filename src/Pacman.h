@@ -17,4 +17,5 @@ private:
 	sf::ConvexShape Pacman::getMouth();
 	void Pacman::setDirection(Direction);
 	void Pacman::update(float);
+	Direction getDirection(void);
 };
