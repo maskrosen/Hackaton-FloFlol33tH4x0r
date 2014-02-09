@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "DIrection.h"
 #pragma once
 
 class Pacman {
@@ -6,12 +7,13 @@ class Pacman {
 private:
     int radius;
 	float xPos, yPos;
+	Direction direction;
 	sf::CircleShape body;
 	sf::ConvexShape mouth;
 public:
     Pacman(int, float, float);
 	sf::CircleShape Pacman::getBody();
 	sf::ConvexShape Pacman::getMouth();
-	void Pacman::move(float, float);
-	void Pacman::update();
+	void Pacman::setDirection(Direction);
+	void Pacman::update(float);
 };

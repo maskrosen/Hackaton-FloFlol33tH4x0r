@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
 	/* Variables gg */
-	clock_t tDiff = 0;
+	float tDiff = 0;
 	clock_t tNow;
 	clock_t tLast = 0;
 	Map map;
@@ -29,7 +29,7 @@ int main()
     {
 		//Update time
 		tNow = clock();
-		tDiff = tNow - tLast;
+		tDiff = (float(tNow - tLast))/CLOCKS_PER_SEC;
 		tLast = tNow;
 		printf ("%f sec, %d clicks.\n",((float)tNow)/CLOCKS_PER_SEC,tNow);
 
@@ -49,7 +49,7 @@ int main()
 
         }
 
-		pacman->update();
+		pacman->update((float)tDiff);
 
 		/* Draw Stuff */
         window.clear();

@@ -12,8 +12,19 @@ void PacmanInput::ProcessEvent(sf::Event event)
 	{
 		if (event.key.code == sf::Keyboard::Up)
 		{
-			std::cout << "Up pressed";
-			pacman->move(1, 1);
+			pacman->setDirection(Direction::Up);
+		}
+		else if (event.key.code == sf::Keyboard::Down)
+		{
+			pacman->setDirection(Direction::Down);
+		}
+		else if (event.key.code == sf::Keyboard::Left)
+		{
+			pacman->setDirection(Direction::Left);
+		}
+		else if (event.key.code == sf::Keyboard::Right)
+		{
+			pacman->setDirection(Direction::Right);
 		}
 	}
 }

@@ -24,14 +24,15 @@ sf::ConvexShape Pacman::getMouth(){
 	return mouth;
 }
 
-void Pacman::move(float x, float y)
+void Pacman::setDirection(Direction dir)
 {
-	xPos += x;
-	yPos += y;
+	direction = dir;
 }
 
-void Pacman::update()
+void Pacman::update(float delta)
 {
+	xPos += 1.0*delta;
+	yPos += 1.0*delta;
 	body.setPosition(xPos, yPos);
 	mouth.setPoint(0, sf::Vector2f(xPos, yPos+radius/2));
 	mouth.setPoint(1, sf::Vector2f(xPos+radius, yPos+radius));
