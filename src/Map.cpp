@@ -38,10 +38,25 @@ Map::Map(){
 			sf::RectangleShape b;
 			b.setSize(sf::Vector2f(30,30)); //TODO: TILE_WIDTH
 			b.setPosition((float)(i*30),(float)(j*30)); //TODO: TILE_WIDTH
-			if (mapBlocks[i][j]) {
-				b.setFillColor(sf::Color::Blue);
-			} else {
-				b.setFillColor(sf::Color::Black);
+			switch (mapBlocks[i][j]) {
+				case 0:
+					b.setFillColor(sf::Color::Black);
+					break;
+				case 1:
+					b.setFillColor(sf::Color::Blue);
+					break;
+				case 2:
+					b.setFillColor(sf::Color(50, 50, 50, 255)); // grey
+					break;
+				case 3:
+					b.setFillColor(sf::Color(50, 50, 50, 255)); // grey
+					break;
+				case 4:
+					b.setFillColor(sf::Color::Yellow);
+					break;
+				case 5:
+					b.setFillColor(sf::Color::Black);
+					break;
 			}
 			mapShapes[i][j] = b;
 		}
