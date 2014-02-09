@@ -23,3 +23,17 @@ sf::CircleShape Pacman::getBody(){
 sf::ConvexShape Pacman::getMouth(){
 	return mouth;
 }
+
+void Pacman::move(float x, float y)
+{
+	xPos += x;
+	yPos += y;
+}
+
+void Pacman::update()
+{
+	body.setPosition(xPos, yPos);
+	mouth.setPoint(0, sf::Vector2f(xPos, yPos+radius/2));
+	mouth.setPoint(1, sf::Vector2f(xPos+radius, yPos+radius));
+	mouth.setPoint(2, sf::Vector2f(xPos, yPos+3*radius/2));
+}

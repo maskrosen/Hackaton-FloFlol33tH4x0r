@@ -47,9 +47,11 @@ int main()
 
         }
 
+		pacman->update();
+
 		/* Draw Stuff */
         window.clear();
-      //  window.draw(shape);
+		// window.draw(shape);
 		window.draw(pacman->getBody());
 		window.draw(pacman->getMouth());
 

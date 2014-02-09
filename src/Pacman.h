@@ -8,8 +8,10 @@ private:
 	float xPos, yPos;
 	sf::CircleShape body;
 	sf::ConvexShape mouth;
-  public:
+public:
     Pacman(int, float, float);
 	sf::CircleShape Pacman::getBody();
 	sf::ConvexShape Pacman::getMouth();
+	void Pacman::move(float, float);
+	void Pacman::update();
 };
