@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Direction.h"
+#include "Pos.h"
 #pragma once
 
 class Pacman {
@@ -18,4 +19,5 @@ private:
 	void Pacman::setDirection(Direction);
 	void Pacman::update(float);
 	Direction getDirection(void);
+	Pos getNextPos();
 };

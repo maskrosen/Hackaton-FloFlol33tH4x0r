@@ -60,3 +60,26 @@ void Pacman::update(float delta){
 Direction Pacman::getDirection(void){
 	return direction;
 }
+
+Pos Pacman::getNextPos(){
+	Pos p = Pos(xPos, yPos);
+	switch (direction) {
+		case Direction::Up:
+			return p.add(Pos(0,-1));
+			break;
+
+		case Direction::Down:
+			return p.add(Pos(0,1));
+			break;
+
+		case Direction::Left:
+			return p.add(Pos(-1,0));
+			break;
+
+		case Direction::Right:
+			return p.add(Pos(1,0));
+			break;
+		default:
+			return p;
+	}
+}

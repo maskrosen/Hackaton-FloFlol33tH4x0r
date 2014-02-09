@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "Pos.h"
 #define TILE_WIDTH 30;
 /*
 * A class representing the map. It is built up with blocks (1) and free space (0).
@@ -15,7 +16,9 @@ public:
 	int getBlock(int, int);
 	int mapSize();
 	sf::RectangleShape getShape(int, int);
+	Pos getPacmanStartPos(void);
 private:
+	Pos pacmanStartPos;
 	void loadMap();
 	void destroyMap();
 	int size;

@@ -85,6 +85,10 @@ int Map::getBlock(int x, int y){
 	return mapBlocks[x][y];
 }
 
+Pos Map::getPacmanStartPos(void){
+	return Pos(9, 13);
+}
+
 /*
 * Returns the maps length in blocks.
 */
