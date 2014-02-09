@@ -4,9 +4,8 @@
 
 
 GameState::GameState(void) {
-	m = Map();
-	Pos p = m.getPacmanStartPos();
-	pacman = Pacman(30, p.getX()*32, p.getY()*32);
+	m = &Map();
+	pacman = &Pacman(30, m->getPacmanStartPos().getX()*32, m->getPacmanStartPos().getY()*32);
 	initFood();
 }
 
@@ -23,11 +22,11 @@ void GameState::initFood(void) {
 
 void GameState::update(void){
 	
-	Pos p = pacman.getNextPos();
-	if( m.getBlock(p.getX(), p.getY()) == 1 ){
-		pacman.setDirection(Direction::None);
+	Pos p = pacman->getNextPos();
+	if( m->getBlock(p.getX(), p.getY()) == 1 ){
+		pacman->setDirection(Direction::None);
 	}
-	pacman.update(1.0);
+	pacman->update(1.0);
 
 }
 

@@ -10,6 +10,7 @@ using namespace std;
 //Loads the map.
 Map::Map(){
 	size = 20;
+	pacmanStartPos = Pos(-1, -1);
 	int blocks[][20] = {
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 		{1,4,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,4,1},
@@ -55,6 +56,7 @@ Map::Map(){
 					b.setFillColor(sf::Color::Yellow);
 					break;
 				case 5:
+					pacmanStartPos = Pos(i, j);
 					b.setFillColor(sf::Color::Black);
 					break;
 			}

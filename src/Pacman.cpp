@@ -65,19 +65,19 @@ Pos Pacman::getNextPos(){
 	Pos p = Pos(xPos, yPos);
 	switch (direction) {
 		case Direction::Up:
-			return p.add(Pos(0,-1));
+			return p.add(Pos(0,-PACMAN_SPEED));
 			break;
 
 		case Direction::Down:
-			return p.add(Pos(0,1));
+			return p.add(Pos(0,PACMAN_SPEED));
 			break;
 
 		case Direction::Left:
-			return p.add(Pos(-1,0));
+			return p.add(Pos(-PACMAN_SPEED,0));
 			break;
 
 		case Direction::Right:
-			return p.add(Pos(1,0));
+			return p.add(Pos(PACMAN_SPEED,0));
 			break;
 		default:
 			return p;

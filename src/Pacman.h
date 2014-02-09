@@ -4,7 +4,6 @@
 #pragma once
 
 class Pacman {
-
 private:
     float radius;
 	float xPos, yPos;

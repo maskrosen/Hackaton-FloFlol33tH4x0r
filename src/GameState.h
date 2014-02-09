@@ -2,13 +2,13 @@
 #include "FoodItem.h"
 #include "Pacman.h"
 #include "Map.h"
+#include "Pos.h"
 
-class GameState
-{
+class GameState{
 private:
 	FoodItem food[100];
-	Pacman pacman;
-	Map m;
+	Pacman* pacman;
+	Map* m;
 public:
 	GameState(void);
 	~GameState(void);
