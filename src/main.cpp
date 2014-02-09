@@ -21,7 +21,7 @@ int main()
     sf::CircleShape shape(150.f);
     shape.setFillColor(sf::Color::Blue);
 	
-	Pacman* pacman = new Pacman(30, 100.f, 200.f);
+	Pacman* pacman = new Pacman(100.f, 200.f);
 	PacmanInput* pacmanInput = new PacmanInput(pacman);
 
 	Ghost ghost(30.f, 40.f, 200.f, 300.f, sf::Color::Red);
