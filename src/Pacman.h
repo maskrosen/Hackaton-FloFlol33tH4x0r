@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "DIrection.h"
+#include "Direction.h"
 #pragma once
 
 class Pacman {
@@ -7,6 +7,7 @@ class Pacman {
 private:
     int radius;
 	float xPos, yPos;
+	float PACMAN_SPEED;
 	Direction direction;
 	sf::CircleShape body;
 	sf::ConvexShape mouth;

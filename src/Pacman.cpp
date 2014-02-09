@@ -5,6 +5,7 @@ Pacman::Pacman(int r, float x, float y) {
 	radius = r;
 	xPos = x;
 	yPos = y;
+	PACMAN_SPEED = 25;
 	body.setRadius(radius);
 	body.setFillColor(sf::Color::Yellow);
 	body.setPosition(x,y);
@@ -31,8 +32,27 @@ void Pacman::setDirection(Direction dir)
 
 void Pacman::update(float delta)
 {
-	xPos += 1.0*delta;
-	yPos += 1.0*delta;
+	int xDir = 0;
+	int yDir = 0;
+	switch (direction) {
+		case Direction::Up:
+			yDir = -1;
+			break;
+
+		case Direction::Down:
+			yDir = 1;
+			break;
+
+		case Direction::Left:
+			xDir = -1;
+			break;
+
+		case Direction::Right:
+			xDir = 1;
+			break;
+	}
+	xPos += PACMAN_SPEED*delta*xDir;
+	yPos += PACMAN_SPEED*delta*yDir;
 	body.setPosition(xPos, yPos);
 	mouth.setPoint(0, sf::Vector2f(xPos, yPos+radius/2));
 	mouth.setPoint(1, sf::Vector2f(xPos+radius, yPos+radius));
