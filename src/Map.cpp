@@ -5,41 +5,65 @@
 
 using namespace std;
 
+/*
+* A class representing the map. It is built up with blocks (1) and free space (0).
+*/
 class Map {
+	
 public:
-	Map(int level){loadMap(level);};
+	Map(){loadMap();};
 	int getBlock(int, int);
 	int mapSize();
 private:
-	void loadMap(int level);
-	int xLength;
-	int yLength;
-	int mapBlocks[20][20];
+	void loadMap();
+	int size;
+	int mapBlocks [20][20];
 };
 
-void Map::loadMap(int level){
-	xLength = 20;
-	yLength = 20;
-
-	string line;
-	ifstream file;
-	int i = 0;
-
-	file.open("level"+level);
-	while ( getline(file, line) ) {
-		for(int j = 0; j < yLength; j++){
-			mapBlocks [i][j] = line[j] - '0';
+//Loads the map.
+void Map::loadMap(){
+	size = 20;
+	int blocks[][20] = {
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+		{1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1},
+		{1,0,1,1,0,1,0,1,1,1,1,1,1,0,1,0,1,1,0,1},
+		{1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+		{1,0,1,0,1,1,0,0,0,0,0,0,0,0,1,1,0,1,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,1,0,1,1,0,0,0,0,0,0,0,0,1,1,0,1,0,1},
+		{1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+		{1,0,1,1,0,1,1,1,1,0,0,1,1,1,1,0,1,1,0,1},
+		{1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1},
+		{1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1},
+		{1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1},
+		{1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+		{1,0,1,0,1,1,0,0,0,0,0,0,0,0,1,1,0,1,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,1,0,1,1,0,0,0,0,0,0,0,0,1,1,0,1,0,1},
+		{1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+		{1,0,1,1,0,1,0,0,0,0,0,0,0,0,1,0,1,1,0,1},
+		{1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1},
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+	};
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < size; j++){
+			mapBlocks[i][j] = blocks[i][j];
 		}
-		i++;
 	}
+
 }
 
-
+/*
+* Returns a 1 if there is a wall and 0 if it is a free path.
+*/
 int Map::getBlock(int x, int y){
 	return mapBlocks[x][y];
 }
 
+/*
+* Returns the maps length in blocks.
+*/
 int Map::mapSize(){
-	return xLength;
+	return size;
 }
 
