@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Pacman.h"
 #include "PacmanInput.h"
+#include "Map.h"
 #include <time.h>
 #pragma once
 
@@ -13,6 +14,7 @@ int main()
 	clock_t tDiff = 0;
 	clock_t tNow;
 	clock_t tLast = 0;
+	Map map;
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Hackaton project FloFloL33tH4x0r");
     sf::CircleShape shape(150.f);
@@ -51,7 +53,13 @@ int main()
 
 		/* Draw Stuff */
         window.clear();
+
 		// window.draw(shape);
+		for (int i = 0; i< map.mapSize(); i++) {
+			for (int j = 0; j< map.mapSize(); j++) {
+				window.draw(map.getShape(i,j));
+			}
+		}
 		window.draw(pacman->getBody());
 		window.draw(pacman->getMouth());
 
