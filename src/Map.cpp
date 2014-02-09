@@ -11,17 +11,19 @@ using namespace std;
 class Map {
 	
 public:
-	Map(){loadMap();};
+	Map(){};
+	~Map(){};
 	int getBlock(int, int);
 	int mapSize();
 private:
 	void loadMap();
+	void destroyMap();
 	int size;
 	int mapBlocks [20][20];
 };
 
 //Loads the map.
-void Map::loadMap(){
+Map::Map(){
 	size = 20;
 	int blocks[][20] = {
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -51,6 +53,13 @@ void Map::loadMap(){
 		}
 	}
 
+}
+
+/*
+* Get that memory back!!
+*/
+Map::~Map(){
+	delete(mapBlocks);
 }
 
 /*
