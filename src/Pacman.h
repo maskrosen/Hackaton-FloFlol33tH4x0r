@@ -11,6 +11,7 @@ private:
 	Direction direction;
 	sf::CircleShape body;
 	sf::ConvexShape mouth;
+	void Pacman::updateMouthDirection();
   public:
     Pacman (float, float);
 	sf::CircleShape Pacman::getBody();
@@ -19,4 +20,5 @@ private:
 	void Pacman::update(float);
 	Direction getDirection(void);
 	Pos getNextPos();
+
 };

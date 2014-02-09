@@ -29,7 +29,36 @@ void Pacman::setDirection(Direction dir){
 	direction = dir;
 }
 
-void Pacman::update(float delta){
+void Pacman::updateMouthDirection(){
+	switch (direction) {
+		case Direction::Up:
+			mouth.setPoint(0, sf::Vector2f(xPos, yPos));
+			mouth.setPoint(1, sf::Vector2f(xPos+radius, yPos+radius));
+			mouth.setPoint(2, sf::Vector2f(xPos+radius*2, yPos));
+			break;
+
+		case Direction::Down:
+			mouth.setPoint(0, sf::Vector2f(xPos, yPos+radius*2));
+			mouth.setPoint(1, sf::Vector2f(xPos+radius, yPos+radius));
+			mouth.setPoint(2, sf::Vector2f(xPos+radius*2, yPos+radius*2));
+			break;
+
+		case Direction::Left:
+			mouth.setPoint(0, sf::Vector2f(xPos, yPos+radius/2));
+			mouth.setPoint(1, sf::Vector2f(xPos+radius, yPos+radius));
+			mouth.setPoint(2, sf::Vector2f(xPos, yPos+3*radius/2));
+			break;
+
+		case Direction::Right:
+			mouth.setPoint(0, sf::Vector2f(xPos+radius*2, yPos+radius/2));
+			mouth.setPoint(1, sf::Vector2f(xPos+radius, yPos+radius));
+			mouth.setPoint(2, sf::Vector2f(xPos+radius*2, yPos+3*radius/2));
+			break;
+	}
+}
+
+void Pacman::update(float delta)
+{
 	int xDir = 0;
 	int yDir = 0;
 	switch (direction) {
@@ -82,4 +111,5 @@ Pos Pacman::getNextPos(){
 		default:
 			return p;
 	}
+	updateMouthDirection();
 }

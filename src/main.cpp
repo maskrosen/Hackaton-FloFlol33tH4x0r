@@ -13,6 +13,7 @@ int main()
 {
 	/* Variables gg */
 	float tDiff = 0;
+	float mouthTimer = 0;
 	clock_t tNow;
 	clock_t tLast = 0;
 	Map map;
@@ -64,7 +65,12 @@ int main()
 			}
 		}
 		window.draw(pacman->getBody());
-		window.draw(pacman->getMouth());
+		
+		mouthTimer+=tDiff;
+		if(mouthTimer>=1){
+			window.draw(pacman->getMouth());
+			mouthTimer=0;
+		}
 
 		window.draw(ghost.getBody());
 		window.draw(ghost.getHead());
