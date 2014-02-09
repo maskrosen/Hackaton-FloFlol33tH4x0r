@@ -8,10 +8,9 @@ using namespace std;
 int main()
 {
 	/* Variables gg */
-	clock_t tStart;
+	clock_t tDiff = 0;
 	clock_t tNow;
-
-	tStart = clock();
+	clock_t tLast = 0;
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Hackaton project FloFloL33tH4x0r");
     sf::CircleShape shape(150.f);
@@ -19,8 +18,16 @@ int main()
 	
 	Pacman pacman(30,100.f,200.f);
 
+
+	//Zhe amaaaaazing Game Loop
     while (window.isOpen())
     {
+		//Update time
+		tNow = clock();
+		tDiff = tNow - tLast;
+		tLast = tNow;
+		printf ("%f sec, %d clicks.\n",((float)tNow)/CLOCKS_PER_SEC,tNow);
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -35,10 +42,6 @@ int main()
 		window.draw(pacman.getMouth());
 
         window.display();
-
-		tNow = clock();
-		float tDiff = tNow-tStart;
-		printf ("%f sec, %d clicks.\n",((float)tNow)/CLOCKS_PER_SEC,tNow);
     }
 
     return 0;
