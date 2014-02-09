@@ -36,11 +36,12 @@ Map::Map(){
 		for(int j = 0; j < size; j++){
 			mapBlocks[i][j] = blocks[i][j];
 			sf::RectangleShape b;
-			b.setSize(sf::Vector2f(10,10));
+			b.setSize(sf::Vector2f(30,30)); //TODO: TILE_WIDTH
+			b.setPosition((float)(i*30),(float)(j*30)); //TODO: TILE_WIDTH
 			if (mapBlocks[i][j]) {
-				b.setFillColor(sf::Color::Black);
+				b.setFillColor(sf::Color::Blue);
 			} else {
-				b.setFillColor(sf::Color::Yellow);
+				b.setFillColor(sf::Color::Black);
 			}
 			mapShapes[i][j] = b;
 		}
@@ -53,6 +54,7 @@ Map::Map(){
 */
 Map::~Map(){
 	delete(mapBlocks);
+	delete(mapShapes);
 }
 
 /*
@@ -76,8 +78,8 @@ int Map::mapSize(){
 }
 
 /*
-*	Returns an array with blocks
+*	Returns the shape for the given block
 */
-sf::RectangleShape* Map::getShape(int x, int y){
-	return &(mapShapes[x][y]);
+sf::RectangleShape Map::getShape(int x, int y){
+	return mapShapes[x][y];
 }

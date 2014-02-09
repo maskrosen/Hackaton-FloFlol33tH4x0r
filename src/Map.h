@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#define TILE_WIDTH 30;
 /*
 * A class representing the map. It is built up with blocks (1) and free space (0).
 */
@@ -13,7 +14,7 @@ public:
 	~Map();
 	int getBlock(int, int);
 	int mapSize();
-	sf::RectangleShape* getShape(int, int);
+	sf::RectangleShape getShape(int, int);
 private:
 	void loadMap();
 	void destroyMap();
