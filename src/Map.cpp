@@ -34,7 +34,7 @@ Map::Map(){
 	};
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			mapBlocks[i][j] = blocks[i][j];
+			mapBlocks[i][j] = blocks[j][i];
 			sf::RectangleShape b;
 			b.setSize(sf::Vector2f(30,30)); //TODO: TILE_WIDTH
 			b.setPosition((float)(i*30),(float)(j*30)); //TODO: TILE_WIDTH
