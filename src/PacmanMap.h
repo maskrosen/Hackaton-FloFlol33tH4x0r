@@ -8,11 +8,11 @@
 /*
 * A class representing the map. It is built up with blocks (1) and free space (0).
 */
-class Map {
+class PacManMap {
 	
 public:
-	Map();
-	~Map();
+	PacManMap();
+	~PacManMap();
 	int getBlock(int, int);
 	int mapSize();
 	sf::RectangleShape getShape(int, int);

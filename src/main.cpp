@@ -2,16 +2,19 @@
 #include <iostream>
 #include "Pacman.h"
 #include "PacmanInput.h"
-#include "Map.h"
+#include "PacmanMap.h"
 #include <time.h>
 #include "Ghost.h"
 #pragma once
 
 using namespace std;
 
+// Variables
+float mouthTimer = 0;
 
 sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "Hackaton project FloFloL33tH4x0r");
 
+PacManMap* pmMap = new PacManMap();
 Pacman* pacman = new Pacman(100.f, 200.f);
 PacmanInput* pacmanInput = new PacmanInput(pacman);
 Ghost* ghost = new Ghost(30.f, 40.f, 200.f, 300.f, sf::Color::Red);
@@ -35,15 +38,52 @@ void handleEvents()
 	}
 }
 
+void update(float deltaTime)
+{
+	pacman->update(deltaTime);
+}
+
+void draw(sf::RenderWindow* window, float deltaTime)
+{
+	window->clear();
+
+	// window.draw(shape);
+	for (int i = 0; i< pmMap->mapSize(); i++) {
+		for (int j = 0; j< pmMap->mapSize(); j++) {
+			window->draw(pmMap->getShape(i,j));
+		}
+	}
+	window->draw(pacman->getBody());
+
+	mouthTimer+=deltaTime;
+	if(mouthTimer>=0.25){
+		window->draw(pacman->getMouth());
+	}
+	if(mouthTimer>=0.5){			
+		mouthTimer=0;
+	}
+
+	window->draw(ghost->getBody());
+	window->draw(ghost->getHead());
+	window->draw(ghost->getLeg1());
+	window->draw(ghost->getLeg2());
+	window->draw(ghost->getLeg3());
+	window->draw(ghost->getLeg4());
+	window->draw(ghost->getEye1());
+	window->draw(ghost->getEye2());
+	window->draw(ghost->getEyeP1());
+	window->draw(ghost->getEyeP2());
+
+
+	window->display();
+}
+
 int main()
 {
-	/* Variables gg */
+	/* Time variables */
 	float tDiff = 0;
-	float mouthTimer = 0;
 	clock_t tNow;
 	clock_t tLast = 0;
-
-	Map map;
 
 	//Zhe amaaaaazing Game Loop
     while (window->isOpen())
@@ -54,42 +94,15 @@ int main()
 		tLast = tNow;
 		printf ("%f sec, %d clicks.\n",((float)tNow)/CLOCKS_PER_SEC,tNow);
 
+		/* Handling events */
 		handleEvents();
 
-		pacman->update((float)tDiff);
+		/* Handle update in update function */
+		update((float)tDiff);
+
 
 		/* Draw Stuff */
-        window->clear();
-
-		// window.draw(shape);
-		for (int i = 0; i< map.mapSize(); i++) {
-			for (int j = 0; j< map.mapSize(); j++) {
-				window->draw(map.getShape(i,j));
-			}
-		}
-		window->draw(pacman->getBody());
-		
-		mouthTimer+=tDiff;
-		if(mouthTimer>=0.25){
-			window->draw(pacman->getMouth());
-		}
-		if(mouthTimer>=0.5){			
-			mouthTimer=0;
-		}
-
-		window->draw(ghost->getBody());
-		window->draw(ghost->getHead());
-		window->draw(ghost->getLeg1());
-		window->draw(ghost->getLeg2());
-		window->draw(ghost->getLeg3());
-		window->draw(ghost->getLeg4());
-		window->draw(ghost->getEye1());
-		window->draw(ghost->getEye2());
-		window->draw(ghost->getEyeP1());
-		window->draw(ghost->getEyeP2());
-
-
-        window->display();
+		draw(window, (float)tDiff);
     }
 
     return 0;

@@ -2,13 +2,13 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "Map.h"
+#include "PacmanMap.h"
 #pragma once
 
 using namespace std;
 
 //Loads the map.
-Map::Map(){
+PacManMap::PacManMap(){
 	size = 20;
 	pacmanStartPos = Pos(-1, -1);
 	int blocks[][20] = {
@@ -69,7 +69,7 @@ Map::Map(){
 /*
 * Get that memory back!!
 */
-Map::~Map(){
+PacManMap::~PacManMap(){
 	delete(mapBlocks);
 	delete(mapShapes);
 }
@@ -83,24 +83,24 @@ Map::~Map(){
 * 4 = Powerup 
 * 5 = Pacman
 */
-int Map::getBlock(int x, int y){
+int PacManMap::getBlock(int x, int y){
 	return mapBlocks[x][y];
 }
 
-Pos Map::getPacmanStartPos(void){
+Pos PacManMap::getPacmanStartPos(void){
 	return Pos(9, 13);
 }
 
 /*
 * Returns the maps length in blocks.
 */
-int Map::mapSize(){
+int PacManMap::mapSize(){
 	return size;
 }
 
 /*
 *	Returns the shape for the given block
 */
-sf::RectangleShape Map::getShape(int x, int y){
+sf::RectangleShape PacManMap::getShape(int x, int y){
 	return mapShapes[x][y];
 }

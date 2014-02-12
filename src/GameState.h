@@ -1,14 +1,14 @@
 #pragma once
 #include "FoodItem.h"
 #include "Pacman.h"
-#include "Map.h"
+#include "PacManMap.h"
 #include "Pos.h"
 
 class GameState{
 private:
 	FoodItem food[100];
 	Pacman* pacman;
-	Map* m;
+	PacManMap* m;
 public:
 	GameState(void);
 	~GameState(void);
