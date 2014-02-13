@@ -17,6 +17,7 @@ class Ghost {
 
 	public:
 		Ghost (float, float, float, float, sf::Color);
+		void draw(sf::RenderWindow* window, float deltaTime);
 		sf::RectangleShape Ghost::getBody();
 		sf::CircleShape Ghost::getHead();
 		sf::ConvexShape Ghost::getLeg1();

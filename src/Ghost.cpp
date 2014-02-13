@@ -35,6 +35,20 @@ Ghost::Ghost (float w, float h, float x, float y, sf::Color color) {
 		
 }
 
+void Ghost::draw(sf::RenderWindow* window, float deltaTime)
+{
+	window->draw(getBody());
+	window->draw(getHead());
+	window->draw(getLeg1());
+	window->draw(getLeg2());
+	window->draw(getLeg3());
+	window->draw(getLeg4());
+	window->draw(getEye1());
+	window->draw(getEye2());
+	window->draw(getEyeP1());
+	window->draw(getEyeP2());
+}
+
 void Ghost::createLeg(int legNumber, sf::ConvexShape* leg, sf::Color color){
 	leg->setFillColor(color);	
 	float yDif = width/2+height/3;

@@ -6,6 +6,7 @@ Pacman::Pacman (float x, float y) {
 	xPos = x;
 	yPos = y;
 	PACMAN_SPEED = 70;
+	mouthTimer = 0;
 	body.setRadius(radius);
 	body.setFillColor(sf::Color::Yellow);
 	body.setPosition(x,y);
@@ -14,6 +15,19 @@ Pacman::Pacman (float x, float y) {
 	mouth.setPoint(0, sf::Vector2f(xPos, yPos+radius/2));
 	mouth.setPoint(1, sf::Vector2f(xPos+radius, yPos+radius));
 	mouth.setPoint(2, sf::Vector2f(xPos, yPos+3*radius/2));
+}
+
+void Pacman::draw(sf::RenderWindow* window, float deltaTime)
+{
+	window->draw(getBody());
+
+	mouthTimer+=deltaTime;
+	if(mouthTimer>=0.25){
+		window->draw(getMouth());
+	}
+	if(mouthTimer>=0.5){			
+		mouthTimer=0;
+	}
 }
 
 

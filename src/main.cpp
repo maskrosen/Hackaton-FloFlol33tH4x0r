@@ -10,8 +10,6 @@
 using namespace std;
 
 // Variables
-float mouthTimer = 0;
-
 sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "Hackaton project FloFloL33tH4x0r");
 
 PacManMap* pmMap = new PacManMap();
@@ -53,27 +51,10 @@ void draw(sf::RenderWindow* window, float deltaTime)
 			window->draw(pmMap->getShape(i,j));
 		}
 	}
-	window->draw(pacman->getBody());
 
-	mouthTimer+=deltaTime;
-	if(mouthTimer>=0.25){
-		window->draw(pacman->getMouth());
-	}
-	if(mouthTimer>=0.5){			
-		mouthTimer=0;
-	}
+	pacman->draw(window, deltaTime);
 
-	window->draw(ghost->getBody());
-	window->draw(ghost->getHead());
-	window->draw(ghost->getLeg1());
-	window->draw(ghost->getLeg2());
-	window->draw(ghost->getLeg3());
-	window->draw(ghost->getLeg4());
-	window->draw(ghost->getEye1());
-	window->draw(ghost->getEye2());
-	window->draw(ghost->getEyeP1());
-	window->draw(ghost->getEyeP2());
-
+	ghost->draw(window, deltaTime);
 
 	window->display();
 }
@@ -99,7 +80,6 @@ int main()
 
 		/* Handle update in update function */
 		update((float)tDiff);
-
 
 		/* Draw Stuff */
 		draw(window, (float)tDiff);
